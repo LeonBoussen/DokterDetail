@@ -6,12 +6,6 @@ import Portfolio from "./pages/Portfolio";
 export default function App() {
   return (
     <>
-      <nav>
-        <Link to="/">Home</Link> |{" "}
-        <Link to="/about">About</Link> |{" "}
-        <Link to="/portfolio">Portfolio</Link>
-      </nav>
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
