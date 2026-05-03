@@ -43,5 +43,5 @@ Install my-project with something
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[Copyright (c) 2026 DokterDetail. All rights reserved.](https://github.com/LeonBoussen/DokterDetail/blob/main/LICENSE.md)
 
