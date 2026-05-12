@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import { Stethoscope, Crown, Car } from 'lucide-react';
 
 const featuredProjects = [
   {
@@ -9,7 +11,7 @@ const featuredProjects = [
     description:
       'Ons meest uitgebreide en prestigieuze pakket. Met chirurgische precisie corrigeren wij onvolkomenheden in de lak en beschermen wij uw voertuig voor de lange termijn.',
     metrics: ['Paint correction', 'Ceramic coating', 'LED eindcontrole'],
-    image: 'https://picsum.photos/seed/surgical-detail-treatment/1200/900',
+    image: '/assets/placeholders/Dokter_car_inspect.png',
     accent: true,
   },
   {
@@ -18,7 +20,7 @@ const featuredProjects = [
     description:
       'Een complete behandeling voor uw voertuig. Van diepe lakdecontaminatie tot interieur stoomreiniging, perfect voor periodieke dieptereiniging en lakonderhoud.',
     metrics: ['Clay bar', 'Stoomreiniging', 'Glansverbetering'],
-    image: 'https://picsum.photos/seed/premium-detail-treatment/1200/900',
+    image: '/assets/placeholders/Dokter_results.png',
     accent: false,
   },
   {
@@ -27,7 +29,7 @@ const featuredProjects = [
     description:
       'Ons instappakket voor een grondige reiniging van uw voertuig, ideaal voor regulier onderhoud, een frisse uitstraling en verzorgd dagelijks gebruik.',
     metrics: ['Handwas', 'Interieurreiniging', 'Op locatie mogelijk'],
-    image: 'https://picsum.photos/seed/regulier-detail-treatment/1200/900',
+    image: '/assets/placeholders/Dokter_WerkProcess.png',
     accent: false,
   },
 ];
@@ -35,49 +37,48 @@ const featuredProjects = [
 const projectArchive = [
   {
     year: 'Service',
+    name: 'Pickup & Deliver',
+    category: 'Gemak',
+    summary:
+      'De service waarbij uw voertuig op afspraak wordt opgehaald en na behandeling weer wordt teruggebracht.',
+  },
+  {
+    year: 'Service',
     name: 'Lakcorrectie',
     category: 'Exterieur',
     summary:
-      'Meerfasige correctie voor het verwijderen van swirls, waskrassen en zichtbare imperfecties in de lak.',
+      'Correctie voor het verwijderen van swirls, waskrassen en zichtbare imperfecties in de lak.',
   },
   {
     year: 'Service',
     name: 'Ceramic Coating',
     category: 'Bescherming',
-    summary:
-      'Duurzame bescherming voor lak, met langdurige glans en eenvoudiger onderhoud bij correct nazorggebruik.',
+    summary: 'Duurzame bescherming voor lak met langdurige glans.',
   },
   {
     year: 'Service',
     name: 'Interieur Deep Clean',
     category: 'Interieur',
     summary:
-      'Diepgaande reiniging van stoelen, tapijt, dorpels en moeilijk bereikbare zones voor een fris en verzorgd interieur.',
-  },
-  {
-    year: 'Service',
-    name: 'Pickup & Deliver',
-    category: 'Gemak',
-    summary:
-      'Een aanvullende service waarbij uw voertuig op afspraak wordt opgehaald en na behandeling weer wordt teruggebracht.',
+      'Diepgaande reiniging van stoelen, tapijt, dorpels, gordels en moeilijk bereikbare plekken voor een fris en verzorgd interieur.',
   },
 ];
 
 const capabilities = [
   {
-    icon: '✦',
+    icon: Stethoscope,
     title: 'Klinische aanpak',
     description:
       'Wij benaderen detailing als een behandelproces: eerst inspecteren, dan diagnosticeren, daarna gericht corrigeren en beschermen.',
   },
   {
-    icon: '▣',
+    icon: Crown,
     title: 'Premium producten',
     description:
       'Voor onze premium behandelingen werken wij exclusief met hoogwaardige en gecertificeerde producten voor lak, leder en bescherming.',
   },
   {
-    icon: '◌',
+    icon: Car,
     title: 'Één auto tegelijk',
     description:
       'Wij nemen slechts één voertuig per keer in behandeling, zodat iedere stap met volledige focus en compromisloze aandacht wordt uitgevoerd.',
@@ -164,9 +165,9 @@ export default function Portfolio() {
             Van diagnose tot perfect resultaat, detailing met chirurgische precisie.
           </h1>
           <p className="max-w-xl text-sm/relaxed text-gray-500 md:text-base/relaxed">
-            Deze pagina presenteert de behandelingen, kwaliteitsstandaard en zichtbare resultaten van DokterDetail.
-            Van regulier onderhoud tot volledige lakcorrectie en duurzame bescherming: iedere service is opgebouwd
-            rond precisie, focus en een showroomwaardige afwerking.
+            Deze pagina presenteert de behandelingen, kwaliteitsstandaard en zichtbare resultaten van
+            DokterDetail. Van regulier onderhoud tot volledige lakcorrectie en duurzame bescherming:
+            iedere service is opgebouwd rond precisie, focus en een showroomwaardige afwerking.
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <Link
@@ -206,8 +207,8 @@ export default function Portfolio() {
               Uitgelichte services
             </h2>
             <p className="mt-3 text-sm text-gray-500">
-              Een overzicht van onze belangrijkste behandelingen, samengesteld voor voertuigen die vragen om onderhoud,
-              correctie, bescherming en een zichtbare kwaliteitsupgrade.
+              Een overzicht van onze belangrijkste behandelingen, samengesteld voor voertuigen die
+              vragen om onderhoud, correctie, bescherming en een zichtbare kwaliteitsupgrade.
             </p>
           </div>
 
@@ -220,7 +221,8 @@ export default function Portfolio() {
                   project.accent
                     ? 'border-teal-200 bg-teal-50/60 shadow-lg hover:-translate-y-1 hover:shadow-xl'
                     : 'border-gray-200 bg-white shadow-sm hover:-translate-y-1 hover:shadow-md',
-                ].join(' ')}>
+                ].join(' ')}
+              >
                 <img
                   src={project.image}
                   alt={project.title}
@@ -249,14 +251,16 @@ export default function Portfolio() {
                     {project.metrics.map((metric) => (
                       <li
                         key={metric}
-                        className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-medium text-gray-600">
+                        className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-medium text-gray-600"
+                      >
                         {metric}
                       </li>
                     ))}
                   </ul>
                   <Link
                     to="/afspraken"
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-teal-700 transition-colors hover:text-teal-800">
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-teal-700 transition-colors hover:text-teal-800"
+                  >
                     Meer Informatie →
                   </Link>
                 </div>
@@ -266,7 +270,10 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id="werkwijze" className="mx-auto grid w-full max-w-6xl gap-12 px-6 py-20 md:grid-cols-[0.95fr_1.05fr] md:items-center">
+      <section
+        id="werkwijze"
+        className="mx-auto grid w-full max-w-6xl gap-12 px-6 py-20 md:grid-cols-[0.95fr_1.05fr] md:items-center"
+      >
         <div className="space-y-5">
           <p className="text-xs font-semibold uppercase tracking-widest text-teal-700">
             Onze Werkwijze
@@ -275,8 +282,8 @@ export default function Portfolio() {
             Iedere behandeling begint met inspectie en eindigt met controle.
           </h2>
           <p className="max-w-md text-sm/relaxed text-gray-500">
-            Wij behandelen detailing niet als een standaard wasbeurt, maar als een zorgvuldig opgebouwd traject:
-            intake, diagnose, behandeling, bescherming en eindcontrole.
+            Wij behandelen detailing niet als een standaard wasbeurt, maar als een zorgvuldig
+            opgebouwd traject: intake, diagnose, behandeling, bescherming en eindcontrole.
           </p>
           <div className="space-y-3">
             {[
@@ -296,20 +303,26 @@ export default function Portfolio() {
 
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:col-span-2">
-            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">Behandelstructuur</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">
+              Behandelstructuur
+            </p>
             <div className="mt-4 grid gap-4 sm:grid-cols-4">
               {['Intake', 'Diagnose', 'Behandeling', 'Eindcontrole'].map((step, index) => (
                 <div key={step} className="rounded-xl bg-gray-50 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-widest text-teal-700">0{index + 1}</p>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-teal-700">
+                    0{index + 1}
+                  </p>
                   <p className="mt-2 text-sm font-semibold text-gray-900">{step}</p>
                 </div>
               ))}
             </div>
           </div>
           <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 shadow-sm">
-            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">Werkproces</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">
+              Werkproces
+            </p>
             <img
-              src="https://picsum.photos/seed/portfolio-process-1/900/700"
+              src="/assets/placeholders/Dokter_WerkProcess.png"
               alt="Inspectie en behandeling"
               width={900}
               height={700}
@@ -318,9 +331,11 @@ export default function Portfolio() {
             />
           </div>
           <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 shadow-sm">
-            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">Eindresultaat</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">
+              Eindresultaat
+            </p>
             <img
-              src="https://picsum.photos/seed/portfolio-process-2/900/700"
+              src="/assets/placeholders/Dokter_results.png"
               alt="Afwerking en resultaat"
               width={900}
               height={700}
@@ -342,8 +357,8 @@ export default function Portfolio() {
                 Meer dan alleen een detailbeurt
               </h2>
               <p className="mt-3 text-sm text-gray-500">
-                Naast onze hoofdbehandelingen bieden wij aanvullende services voor correctie, bescherming,
-                interieurverzorging en extra gemak rondom de afspraak.
+                Naast onze hoofdbehandelingen bieden wij aanvullende services voor correctie,
+                bescherming, interieurverzorging en extra gemak rondom de afspraak.
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -395,13 +410,22 @@ export default function Portfolio() {
 
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
         <div className="grid gap-8 md:grid-cols-3">
-          {capabilities.map((item) => (
-            <div key={item.title} className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
-              <div className="text-3xl text-teal-700">{item.icon}</div>
-              <h3 className="mt-4 text-lg font-bold text-gray-900">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-gray-500">{item.description}</p>
-            </div>
-          ))}
+          {capabilities.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <div
+                key={item.title}
+                className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-teal-50 text-teal-700">
+                  <Icon className="h-6 w-6" strokeWidth={1.8} />
+                </div>
+                <h3 className="mt-4 text-lg font-bold text-gray-900">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-gray-500">{item.description}</p>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -447,7 +471,9 @@ export default function Portfolio() {
                   className="flex w-full items-center justify-between gap-4 text-left text-sm font-medium text-gray-800 transition-colors hover:text-teal-700"
                 >
                   <span>{faq.question}</span>
-                  <span className="shrink-0 text-lg leading-none">{openFaq === index ? '−' : '+'}</span>
+                  <span className="shrink-0 text-lg leading-none">
+                    {openFaq === index ? '−' : '+'}
+                  </span>
                 </button>
                 {openFaq === index && (
                   <p className="mt-3 text-sm/relaxed text-gray-500">{faq.answer}</p>
@@ -513,7 +539,9 @@ export default function Portfolio() {
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs font-medium text-gray-500">Gewenste behandeling of vraag</label>
+              <label className="text-xs font-medium text-gray-500">
+                Gewenste behandeling of vraag
+              </label>
               <textarea
                 name="aanvraag"
                 value={form.aanvraag}
@@ -540,6 +568,7 @@ export default function Portfolio() {
           </form>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
