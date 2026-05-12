@@ -40,7 +40,7 @@ export default function Navbar() {
           ))}
 
           <NavLink
-            to="/afspraak-maken"
+            to="/afspraak"
             className="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-800"
           >
             Afspraak maken
@@ -101,7 +101,7 @@ export default function Navbar() {
             ))}
 
             <NavLink
-              to="/afspraak-maken"
+              to="/afspraak"
               onClick={() => setIsOpen(false)}
               className="mt-3 inline-flex justify-center rounded-md bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:bg-gray-800"
             >

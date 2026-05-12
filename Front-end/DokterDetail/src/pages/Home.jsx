@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer'
 
 const treatments = [
   {
@@ -165,7 +166,7 @@ export default function Home() {
             Professionele detailing met chirurgische precisie. Wij diagnosticeren elk imperfectie en behandelen het tot op het bot. Zodat uw wagen eruitziet als nieuw uit de showroom.
           </p>
           <Link
-            to="/afspraken"
+            to="/afspraak"
             className="inline-flex items-center gap-2 rounded bg-teal-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-800"
           >
             Boek een Consultatie →
@@ -309,7 +310,7 @@ export default function Home() {
           <div className="relative w-full" style={{ paddingBottom: '66.67%' }}>
             {/* After Image (onderlaag) */}
             <img
-              src="https://scontent.frtm1-3.fna.fbcdn.net/v/t39.30808-6/627858626_1552228110238111_4021794487575279207_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_ohc=OoLQQJC5ImEQ7kNvwHWxYSY&_nc_oc=AdoaeUfgRva4BI-wS4sqwWUpjpQHWfsXDNK4iaiHdxsGXCUSeNeS2q9yyCz05eO4BoA&_nc_zt=23&_nc_ht=scontent.frtm1-3.fna&_nc_gid=nUbrk07pCAXJF8QfjDfd1A&_nc_ss=7b289&oh=00_Af0GZuD1opILxeUCAr-bTve2X86d-0SThCT3vwun1xpg1A&oe=69F6E299"
+              src="/assets/placeholders/Dokter_car_inspect.png"
               alt="Na behandeling"
               className="absolute inset-0 w-full h-full object-cover"
             />
@@ -319,7 +320,7 @@ export default function Home() {
               style={{ width: `${sliderPosition}%` }}
             >
               <img
-                src="https://i.ytimg.com/vi/WWd2ltVFyaU/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAruU3INDM-GwiPyD22nqJqkXsI_A"
+                src="/assets/placeholders/Dokter_results.png"
                 alt="Voor behandeling"
                 className="absolute inset-0 w-full h-full object-cover"
                 style={{ width: `${100 / (sliderPosition / 100)}%`, maxWidth: 'none' }}
@@ -391,13 +392,16 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div className="space-y-6">
-          <h3 className="text-xl font-bold text-gray-900">Consultatie Aanvragen</h3>
-          <p className="text-sm text-gray-500">
-            Vul uw gegevens in voor een vrijblijvende lakinspectie en intakegesprek.
-          </p>
+        <div className="space-y-6 rounded-2xl border border-gray-200 bg-gray-50 p-8 shadow-sm">
+          <div>
+            <h3 className="text-xl font-bold text-gray-900">Vraag een consultatie aan</h3>
+            <p className="mt-2 text-sm text-gray-500">
+              Gebruik dit formulier voor een vrijblijvende aanvraag, lakinspectie of intakegesprek.
+              Zo kunnen wij bepalen welke behandeling het beste past bij uw voertuig.
+            </p>
+          </div>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid gap-4 sm:grid-cols-2">
               {[
                 { name: 'voornaam', label: 'Voornaam', placeholder: 'John' },
                 { name: 'achternaam', label: 'Achternaam', placeholder: 'Doe' },
@@ -406,15 +410,17 @@ export default function Home() {
                   <label className="text-xs font-medium text-gray-500">{label}</label>
                   <input
                     name={name}
+                    type="text"
                     value={form[name]}
                     onChange={handleChange}
                     placeholder={placeholder}
                     required
-                    className="w-full rounded border border-gray-200 px-3 py-2 text-sm outline-none transition focus:ring-2 focus:ring-teal-600"
+                    className="w-full rounded border border-gray-200 bg-white px-3 py-2 text-sm outline-none transition focus:ring-2 focus:ring-teal-600"
                   />
                 </div>
               ))}
             </div>
+
             <div className="space-y-1">
               <label className="text-xs font-medium text-gray-500">E-mailadres</label>
               <input
@@ -422,11 +428,12 @@ export default function Home() {
                 type="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="Johndoe@example.com"
+                placeholder="john@example.com"
                 required
-                className="w-full rounded border border-gray-200 px-3 py-2 text-sm outline-none transition focus:ring-2 focus:ring-teal-600"
+                className="w-full rounded border border-gray-200 bg-white px-3 py-2 text-sm outline-none transition focus:ring-2 focus:ring-teal-600"
               />
             </div>
+
             <div className="space-y-1">
               <label className="text-xs font-medium text-gray-500">
                 Voertuiggegevens (merk / model / bouwjaar)
@@ -435,19 +442,34 @@ export default function Home() {
                 name="voertuig"
                 value={form.voertuig}
                 onChange={handleChange}
-                placeholder="Porsche 911 (992) 2023"
-                className="w-full rounded border border-gray-200 px-3 py-2 text-sm outline-none transition focus:ring-2 focus:ring-teal-600"
+                placeholder="BMW 3 Serie 2022"
+                className="w-full rounded border border-gray-200 bg-white px-3 py-2 text-sm outline-none transition focus:ring-2 focus:ring-teal-600"
               />
             </div>
+
+            <div className="space-y-1">
+              <label className="text-xs font-medium text-gray-500">
+                Gewenste behandeling of vraag
+              </label>
+              <textarea
+                name="aanvraag"
+                value={form.aanvraag}
+                onChange={handleChange}
+                placeholder="Bijvoorbeeld: Premium Detail, ceramic coating, lakcorrectie of pickup & deliver."
+                rows={5}
+                className="w-full rounded border border-gray-200 bg-white px-3 py-2 text-sm outline-none transition focus:ring-2 focus:ring-teal-600"
+              />
+            </div>
+
             <button
               type="submit"
               className="w-full rounded bg-teal-700 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-800"
             >
-              Aanvraag Versturen
+              Consultatie aanvragen
             </button>
             <p className="text-center text-xs text-gray-400">
               Wij nemen binnen één werkdag contact met u op.{' '}
-              <Link to="/privacy" className="underline hover:text-teal-700">
+              <Link to="/privacy" className="underline transition-colors hover:text-teal-700">
                 Privacyverklaring
               </Link>
               .
@@ -455,6 +477,7 @@ export default function Home() {
           </form>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
