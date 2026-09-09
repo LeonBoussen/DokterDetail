@@ -98,7 +98,7 @@ DokterDetail/
 │       ├── package.json
 │       └── vite.config.js
 ├── assets/
-│   └── site-overview.mp4            # jouw site-overview video (zelf toevoegen)
+│   └── site-overview.mp4            # site overview video
 ├── LICENSE.md
 └── README.md
 ```
