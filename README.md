@@ -11,10 +11,7 @@
 ---
 
 ## Site Overview
-[Bekijk de site overview](assets/site-overview.mp4)
-
-> **Opmerking:** GitHub geeft geen ingesloten `<video>`-elementen weer in een README, daarom
-> opent de video via bovenstaande link in een eigen tabblad.
+[Bekijk de webssite](assets/site-overview.mp4)
 
 ---
 
