@@ -11,10 +11,10 @@
 ---
 
 ## Site Overview
-<video controls width="100%" style="border-radius: 12px; border: 1px solid #e5e7eb;" preload="metadata">
-  <source src="assets/site-overview.mp4" type="video/mp4" />
-  Je browser ondersteunt geen ingesloten video — <a href="assets/site-overview.mp4">bekijk de video hier</a>.
-</video>
+[Bekijk de site overview](assets/site-overview.mp4)
+
+> **Opmerking:** GitHub geeft geen ingesloten `<video>`-elementen weer in een README, daarom
+> opent de video via bovenstaande link in een eigen tabblad.
 
 ---
 
