@@ -171,7 +171,7 @@ export default function Portfolio() {
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <Link
-              to="/afspraken"
+              to="/afspraak"
               className="inline-flex items-center gap-2 rounded bg-teal-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-800"
             >
               Boek een consultatie →
@@ -212,7 +212,7 @@ export default function Portfolio() {
             </p>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {featuredProjects.map((project) => (
               <article
                 key={project.title}
@@ -243,22 +243,22 @@ export default function Portfolio() {
                       </span>
                     )}
                   </div>
-                  <div className="space-y-2">
+                  <div className="flex-1 space-y-2">
                     <h3 className="text-xl font-bold leading-snug text-gray-900">{project.title}</h3>
                     <p className="text-sm leading-relaxed text-gray-500">{project.description}</p>
                   </div>
-                  <ul className="flex flex-1 flex-wrap gap-2">
+                  <ul className="flex flex-wrap content-start gap-2">
                     {project.metrics.map((metric) => (
                       <li
                         key={metric}
-                        className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-medium text-gray-600"
+                        className="shrink-0 whitespace-nowrap rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-medium leading-5 text-gray-600"
                       >
                         {metric}
                       </li>
                     ))}
                   </ul>
                   <Link
-                    to="/afspraken"
+                    to="/afspraak"
                     className="inline-flex items-center gap-2 text-sm font-semibold text-teal-700 transition-colors hover:text-teal-800"
                   >
                     Meer Informatie →

@@ -2,7 +2,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer'
+import Footer from '../components/Footer';
+import { Stethoscope, Crown, Car } from 'lucide-react';
 
 const treatments = [
   {
@@ -60,19 +61,19 @@ const treatments = [
 
 const whyItems = [
   {
-    icon: '🏥',
+    icon: Stethoscope,
     title: 'Klinische pro',
     description:
       'wij voorzien de beste kwaliteit voor de beste prijs',
   },
   {
-    icon: '⭐',
+    icon: Crown,
     title: 'Premium line',
     description:
       'Voor onze premium pakketen werken we exclusief met gecertificeerde en hoogwaardige merken.',
   },
   {
-    icon: '🔬',
+    icon: Car,
     title: 'Ongelimiteerde Aandacht',
     description:
       'Wij nemen slechts één voertuig per keer in behandeling om compromisloze focus en kwaliteit te garanderen.',
@@ -357,13 +358,18 @@ export default function Home() {
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
-            {whyItems.map((item) => (
-              <div key={item.title} className="space-y-3">
-                <div className="text-3xl">{item.icon}</div>
-                <h4 className="font-semibold text-gray-900">{item.title}</h4>
-                <p className="text-sm text-gray-500">{item.description}</p>
-              </div>
-            ))}
+            {whyItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.title} className="space-y-3">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-teal-50 text-teal-700">
+                    <Icon className="h-6 w-6" strokeWidth={1.8} />
+                  </div>
+                  <h4 className="font-semibold text-gray-900">{item.title}</h4>
+                  <p className="text-sm text-gray-500">{item.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
